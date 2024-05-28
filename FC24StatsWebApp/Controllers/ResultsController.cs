@@ -49,8 +49,8 @@ namespace FC24StatsWebApp.Controllers
         // GET: Results/Create
         public IActionResult Create()
         {
-            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "PlayerID");
-            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "TournamentID");
+            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "Name");
+            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "Name");
             return View();
         }
 
@@ -65,8 +65,8 @@ namespace FC24StatsWebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "PlayerID", result.PlayerID);
-            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "TournamentID", result.TournamentID);
+            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "Name", result.PlayerID);
+            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "Name", result.TournamentID);
             return View(result);
         }
 
@@ -83,8 +83,8 @@ namespace FC24StatsWebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "PlayerID", result.PlayerID);
-            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "TournamentID", result.TournamentID);
+            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "Name", result.PlayerID);
+            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "Name", result.TournamentID);
             return View(result);
         }
 
@@ -118,8 +118,8 @@ namespace FC24StatsWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "PlayerID", result.PlayerID);
-            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "TournamentID", result.TournamentID);
+            ViewData["PlayerID"] = new SelectList(_context.Players, "PlayerID", "Name", result.PlayerID);
+            ViewData["TournamentID"] = new SelectList(_context.Tournaments, "TournamentID", "Name", result.TournamentID);
             return View(result);
         }
 
@@ -153,7 +153,6 @@ namespace FC24StatsWebApp.Controllers
             {
                 _context.Results.Remove(result);
             }
-
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

@@ -1,41 +1,45 @@
-﻿@model Result
+﻿@model FC24StatsWebApp.Models.Result
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Przyznaj Punkty";
 }
 
-<h1>Create</h1>
+<h1>Przyznaj Punkty</h1>
 
-<h4>Result</h4>
+<h4>Wynik</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="PlayerID" class="control-label"></label>
-                <select asp-for="PlayerID" class ="form-control" asp-items="ViewBag.PlayerID"></select>
+                <label asp-for="PlayerID" class="control-label">Gracz</label>
+                <select asp-for="PlayerID" class="form-control" asp-items="ViewBag.PlayerID"></select>
+                <span asp-validation-for="PlayerID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TournamentID" class="control-label"></label>
-                <select asp-for="TournamentID" class ="form-control" asp-items="ViewBag.TournamentID"></select>
+                <label asp-for="TournamentID" class="control-label">Turniej</label>
+                <select asp-for="TournamentID" class="form-control" asp-items="ViewBag.TournamentID"></select>
+                <span asp-validation-for="TournamentID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Place" class="control-label"></label>
+                <label asp-for="Place" class="control-label">Miejsce</label>
                 <input asp-for="Place" class="form-control" />
                 <span asp-validation-for="Place" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Powrót do listy</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

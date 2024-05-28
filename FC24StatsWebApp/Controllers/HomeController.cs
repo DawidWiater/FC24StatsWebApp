@@ -19,7 +19,18 @@ namespace FC24StatsWebApp.Controllers
 
         public IActionResult AllTimeTable()
         {
-            var players = _context.Players.OrderByDescending(p => p.Name).ToList(); // Przyklad sortowania po nazwie, dostosuj do swoich potrzeb
+            var players = _context.Players
+                .Include(p => p.Results)
+                .Select(p => new PlayerViewModel
+                {
+                    PlayerID = p.PlayerID,
+                    Name = p.Name,
+                    Username = p.Username,
+                    TotalPoints = p.Results.Sum(r => r.Place) // Zmodyfikuj obliczenia punktów wed³ug swoich potrzeb
+                })
+                .OrderByDescending(p => p.TotalPoints)
+                .ToList();
+
             return View(players);
         }
 

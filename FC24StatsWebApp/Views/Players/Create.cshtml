@@ -1,13 +1,12 @@
 ﻿@model FC24StatsWebApp.Models.Player
 
 @{
-    ViewData["Title"] = "Utwórz Gracza";
-    Layout = "_Layout";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Utwórz Gracza</h1>
+<h1>Create</h1>
 
-<h4>Gracz</h4>
+<h4>Player</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,14 +23,14 @@
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Utwórz" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Powrót do listy</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
