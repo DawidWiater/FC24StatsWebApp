@@ -1,7 +1,8 @@
-using FC24StatsWebApp.Data;
-using FC24StatsWebApp.Models;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using FC24StatsWebApp.Data;
+using FC24StatsWebApp.Models;
 using System.Diagnostics;
 
 namespace FC24StatsWebApp.Controllers
@@ -26,9 +27,14 @@ namespace FC24StatsWebApp.Controllers
                     PlayerID = p.PlayerID,
                     Name = p.Name,
                     Username = p.Username,
-                    TotalPoints = p.Results.Sum(r => r.Place) // Zmodyfikuj obliczenia punktów wed³ug swoich potrzeb
+                    TotalPoints = p.Results.Sum(r => r.Points),  // Sumowanie punktów
+                    FirstPlaceCount = p.Results.Count(r => r.Place == 1),
+                    SecondPlaceCount = p.Results.Count(r => r.Place == 2),
+                    ThirdPlaceCount = p.Results.Count(r => r.Place == 3),
+                    OtherPlaceCount = p.Results.Count(r => r.Place > 3)
                 })
-                .OrderByDescending(p => p.TotalPoints)
+                .OrderByDescending(p => p.TotalPoints)          // Sortowanie po punktach
+                .ThenBy(p => p.FirstPlaceCount)                 // Sortowanie po liczbie pierwszych miejsc
                 .ToList();
 
             return View(players);

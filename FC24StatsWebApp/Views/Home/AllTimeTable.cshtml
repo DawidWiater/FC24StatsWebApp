@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FC24StatsWebApp.Models.Player>
+﻿@model IEnumerable<FC24StatsWebApp.Models.PlayerViewModel>
 
 @{
     ViewData["Title"] = "Tabela wszech czasów";
@@ -10,8 +10,12 @@
     <thead>
         <tr>
             <th>Imię</th>
-            <th>Nazwa użytkownika</th>
-            <!-- Dodaj więcej kolumn w zależności od potrzeb -->
+            <th>Nazwisko</th>
+            <th>Suma Punktów</th>
+            <th>Zajete 1 miejsce</th>
+            <th>Zajete 2 miejsce</th>
+            <th>Zajete 3 miejsce</th>
+            <th>Miejsca poza podium</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +24,11 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                 <td>@Html.DisplayFor(modelItem => item.Username)</td>
-                <!-- Dodaj więcej kolumn w zależności od potrzeb -->
+                <td>@Html.DisplayFor(modelItem => item.TotalPoints)</td>
+                <td>@Html.DisplayFor(modelItem => item.FirstPlaceCount)</td>
+                <td>@Html.DisplayFor(modelItem => item.SecondPlaceCount)</td>
+                <td>@Html.DisplayFor(modelItem => item.ThirdPlaceCount)</td>
+                <td>@Html.DisplayFor(modelItem => item.OtherPlaceCount)</td>
             </tr>
         }
     </tbody>
