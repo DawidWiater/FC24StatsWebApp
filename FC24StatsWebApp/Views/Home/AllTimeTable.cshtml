@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FC24StatsWebApp.Models.Player>
+
+@{
+    ViewData["Title"] = "Tabela wszech czasów";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwa użytkownika</th>
+            <!-- Dodaj więcej kolumn w zależności od potrzeb -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                <!-- Dodaj więcej kolumn w zależności od potrzeb -->
+            </tr>
+        }
+    </tbody>
+</table>

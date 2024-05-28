@@ -1,0 +1,13 @@
+bobody {
+    background-image: url('/images/tlo.jpg'); /* Zamieñ na w³aœciw¹ œcie¿kê do Twojego obrazu */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* Zmienia kolor tekstu na bia³y */
+}
+
+.text-center {
+    background-color: rgba(0, 0, 0, 0.5); /* Dodaje pó³przezroczyste t³o dla lepszej widocznoœci tekstu */
+    padding: 20px;
+    border-radius: 10px;
+}
